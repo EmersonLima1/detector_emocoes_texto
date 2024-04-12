@@ -9,7 +9,7 @@ import nltk
 nltk.download('stopwords')
 
 # Caminho para os arquivos de modelos
-model_path = 'models/my_model.h5'
+model_path = 'models/modelo_texto_emocao.h5'
 count_vectorizer_path = 'models/CountVectorizer.pkl'
 label_encoder_path = 'models/encoder.pkl'
 
