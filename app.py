@@ -10,9 +10,9 @@ import nltk
 nltk.download('stopwords')
 
 # URLs dos arquivos no GitHub
-model_url = 'https://github.com/seu_usuario/seu_repositorio/raw/main/my_model.h5'
-count_vectorizer_url = 'https://github.com/seu_usuario/seu_repositorio/raw/main/CountVectorizer.pkl'
-label_encoder_url = 'https://github.com/seu_usuario/seu_repositorio/raw/main/encoder.pkl'
+model_url = 'https://github.com/EmersonLima1/detector_emocoes_texto/blob/main/modelo_texto_emocao.h5'
+count_vectorizer_url = 'https://github.com/EmersonLima1/detector_emocoes_texto/blob/CountVectorizer.pkl'
+label_encoder_url = 'https://github.com/EmersonLima1/detector_emocoes_texto/blob/encoder.pkl'
 
 # Baixe e carregue o modelo
 model_response = requests.get(model_url)
