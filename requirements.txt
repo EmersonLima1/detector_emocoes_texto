@@ -3,3 +3,4 @@ tensorflow
 nltk
 numpy
 requests
+gunicorn==21.0.1
