@@ -5,32 +5,24 @@ from nltk.corpus import stopwords
 from nltk.stem import PorterStemmer
 import numpy as np
 import re
-import requests
 import nltk
 nltk.download('stopwords')
 
-# URLs dos arquivos no GitHub
-model_url = 'https://github.com/EmersonLima1/detector_emocoes_texto/blob/main/modelo_texto_emocao.h5'
-count_vectorizer_url = 'https://github.com/EmersonLima1/detector_emocoes_texto/blob/CountVectorizer.pkl'
-label_encoder_url = 'https://github.com/EmersonLima1/detector_emocoes_texto/blob/encoder.pkl'
+# Caminho para os arquivos de modelos
+model_path = 'models/my_model.h5'
+count_vectorizer_path = 'models/CountVectorizer.pkl'
+label_encoder_path = 'models/encoder.pkl'
 
-# Baixe e carregue o modelo
-model_response = requests.get(model_url)
-with open('my_model.h5', 'wb') as model_file:
-    model_file.write(model_response.content)
-model = load_model('my_model.h5')
+# Carregando o modelo
+model = load_model(model_path)
 
-# Baixe e carregue o CountVectorizer
-cv_response = requests.get(count_vectorizer_url)
-with open('CountVectorizer.pkl', 'wb') as cv_file:
-    cv_file.write(cv_response.content)
-count_vectorizer = pickle.load(open('CountVectorizer.pkl', 'rb'))
+# Carregando o CountVectorizer
+with open(count_vectorizer_path, 'rb') as f:
+    count_vectorizer = pickle.load(f)
 
-# Baixe e carregue o LabelEncoder
-encoder_response = requests.get(label_encoder_url)
-with open('encoder.pkl', 'wb') as encoder_file:
-    encoder_file.write(encoder_response.content)
-label_encoder = pickle.load(open('encoder.pkl', 'rb'))
+# Carregando o LabelEncoder
+with open(label_encoder_path, 'rb') as f:
+    label_encoder = pickle.load(f)
 
 # Inicialize o aplicativo Flask
 app = Flask(__name__)
