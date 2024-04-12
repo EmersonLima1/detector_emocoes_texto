@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detecção de Emoção</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script>
+        // Função para limpar o campo de texto e o resultado da emoção detectada
+        function limpar() {
+            document.getElementById('phrase').value = ''; // Limpa o campo de texto
+            document.getElementById('emotion').innerHTML = ''; // Limpa o resultado da emoção detectada
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Detecção de Emoção</h1>
+        <form action="/detect" method="POST">
+            <div>
+                <label for="phrase">Insira uma frase (em inglês):</label>
+                <input type="text" id="phrase" name="phrase" required>
+            </div>
+            <button type="submit">Detectar Emoção</button>
+        </form>
+        {% if emotion %}
+            <h2 id="emotion">Emoção Detectada: {{ emotion }}</h2>
+            <!-- Botão para limpar o campo de texto e o resultado -->
+            <button onclick="limpar()">Limpar</button>
+        {% endif %}
+    </div>
+</body>
+
+</html>
